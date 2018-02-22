@@ -26,7 +26,15 @@ class DestinationComponent extends Component {
         this.checkCurrentProp(prevProps.places.randomPlace);
     }
 
+    componentWillReceiveProps(nextProps){
+      this.setState({
+        lat: nextProps.randomPlace.geometry.location.lat(),
+        lng: nextProps.randomPlace.geometry.location.lng()
+      })
+    }
+
     checkCurrentProp(randomPlace){
+      
       if(randomPlace.place_id !== this.props.randomPlace.place_id){
         var placeId = this.props.randomPlace.place_id;
         this.props.dispatch(actions.GetPlaceDetail(placeId));
