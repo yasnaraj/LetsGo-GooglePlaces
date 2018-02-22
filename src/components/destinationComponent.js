@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions';
-import * as reducer from '../store/reducer';
 
 import MapWithDirectionRenderer from './MapWithDirectionRenderer';
 import PlacePhotos from './PlacePhotos';
@@ -37,7 +36,7 @@ class DestinationComponent extends Component {
   render() {
     return (
       <div className="bodyContainer individualPlaces">
-        <h2 className="mainHeader"> You should check out - <span style={{color: 'purple'}}>{this.props.randomPlace ? this.props.randomPlace.name : null} </span></h2>
+        <h2 className="subHeader"> You should check out - <span style={{color: 'purple'}} className="mainHeader">{this.props.randomPlace ? this.props.randomPlace.name : null} </span></h2>
 
         <MapWithDirectionRenderer 
         lat={this.state.lat}

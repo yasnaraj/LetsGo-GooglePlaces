@@ -10,8 +10,7 @@ class PlacePhotos extends Component{
     
     componentWillReceiveProps(nextProps){
         var photos = nextProps.place.photos;
-        
-        var src = '';
+
         var arr = [];
         if(photos){
             photos.forEach(element => {
@@ -29,7 +28,7 @@ class PlacePhotos extends Component{
         
         return(
             <div >
-               <h3 className="mainHeader"> Image Gallery: </h3>
+               <h2 className="subHeader"> Image Gallery: </h2>
                 <div className="gallery">
                 {
                     this.state.photoSrc.map(function(data, index){

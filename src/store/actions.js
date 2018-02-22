@@ -9,9 +9,8 @@ export function GetPlacesList(query){
             };
 
             const service = new _google.maps.places.PlacesService(document.createElement('div'));
-            var response = undefined;
             service.textSearch(request, function callback(result, status){
-                if(status="OK"){
+                if(status==="OK"){
                     var placeList = result;
                     dispatch({type: types.PLACE_LIST, placeList});
                 }else{
@@ -34,9 +33,8 @@ export function GetPlaceDetail(placeId){
             };
 
             const service = new _google.maps.places.PlacesService(document.createElement('div'));
-            var response = undefined;
             service.getDetails(request, function callback(result, status){
-                if(status="OK"){
+                if(status==="OK"){
                     var placeDetail = result;
                     dispatch({type: types.PLACE_DETAIL, placeDetail});
                 }else{
