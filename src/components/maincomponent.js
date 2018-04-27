@@ -33,7 +33,7 @@ class MainComponent extends Component {
         <div className="placeSelection">
             <div className="form-group individualPlaces">
             <img src={require('../images/city.jpg')} className="rounded mx-auto d-block"  alt="cities" width="350" height="auto"/>
-            <input name="group100" type="radio" value="landmarks" onClick={this.onRadioChange}/>
+            <input name="group100" type="radio" value="national+landmarks" onClick={this.onRadioChange}/>
             <label>Landmarks</label>
             </div>
             <div className="form-group individualPlaces">
