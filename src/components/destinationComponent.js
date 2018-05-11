@@ -50,7 +50,7 @@ class DestinationComponent extends Component {
         lat={this.state.lat}
         lng={this.state.lng}/>
 
-        <PlacePhotos place = {this.props.places.placeDetail} />
+        <PlacePhotos place = {this.props.places.placeDetail} name={this.props.randomPlace ? this.props.randomPlace.name : ''} />
       </div>
     );
   }

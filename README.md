@@ -8,6 +8,7 @@ Once a user selects a generic thing they are interested in, the application:
 - Displays the place name
 - Displays the direction to the randomly selected place from their current location or pin points the location in Google Maps
 - Displays a list of images for reference of the randomly selected place
+- Displays top 5 reviews of the place
 
 This Application makes use of the following Google API services:
 - Place Search (Text Search Request)

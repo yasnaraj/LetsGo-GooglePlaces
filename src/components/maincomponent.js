@@ -7,21 +7,31 @@ class MainComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            randomState: undefined
+            randomState: undefined,
+            showPlace: false
         }
-        this.onRadioChange = this.onRadioChange.bind(this);
+
+        this.onBtnClick = this.onBtnClick.bind(this);
     }
 
-    onRadioChange(e){
+    onBtnClick(val){
         //alert(e.target.value);
-        var query =  e.target.value + '+in+usa';
-        this.props.dispatch(actions.GetPlacesList(query));
+        var _this = this;
+        var query =  val + '+in+usa';
+        this.setState({showPlace: false});
+        this.props.dispatch(actions.GetPlacesList(query)).then((resp) => {
+            
+
+            setTimeout(function(){
+                _this.setState({showPlace: true});
+
+                var element = document.getElementById("destinationComp");
+                document.getElementById("destinationComp").offsetTop + 20;
+                element.scrollIntoView({behavior: "smooth", block: "start"});
+                }, 500);
+        });
         
-        setTimeout(function(){
-            var element = document.getElementById("destinationComp");
-            document.getElementById("destinationComp").offsetTop + 10;
-            element.scrollIntoView({behavior: "smooth", block: "start"});
-            }, 20);
+        
     }
 
 
@@ -30,47 +40,40 @@ class MainComponent extends Component {
       <div className="bodyContainer">
       
         <h2 className="mainHeader"> What excites you? </h2>
-        <div className="placeSelection">
-            <div className="form-group individualPlaces">
-            <img src={require('../images/city.jpg')} className="rounded mx-auto d-block"  alt="cities" width="350" height="auto"/>
-            <input name="group100" type="radio" value="national+landmarks" onClick={this.onRadioChange}/>
+        <div id="placesComp" className="placeSelection">
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("national+landmarks")}>
+            <img src={require('../images/city.jpg')} className="rounded mx-auto d-block"  alt="cities" width="250" height="auto"/>
             <label>Landmarks</label>
-            </div>
-            <div className="form-group individualPlaces">
-            <img src={require('../images/beach.jpeg')} className="rounded mx-auto d-block"  alt="beaches" width="350" height="auto"/>
-                <input name="group100" type="radio" value="beaches" onClick={this.onRadioChange}/>
+            </button>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("beaches")}>
+            <img src={require('../images/beach.jpeg')} className="rounded mx-auto d-block"  alt="beaches" width="250" height="auto"/>
                 <label>Beaches</label>
-            </div>
+            </button>
 
-            <div className="form-group individualPlaces">
-                <img src={require('../images/mountain.jpg')} className="rounded mx-auto d-block"  alt="mountains" width="350" height="auto"/>
-                <input name="group100" type="radio" value="states+with+mountains" onClick={this.onRadioChange}/>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("states+with+mountains")}>
+                <img src={require('../images/mountain.jpg')} className="rounded mx-auto d-block"  alt="mountains" width="250" height="auto"/>
                 <label>Mountains</label>
-            </div>
-            <div className="form-group individualPlaces">
-                <img src={require('../images/nationalpark.jpg')} className="rounded mx-auto d-block"  alt="national parks" width="350" height="auto"/>
-                <input name="group100" type="radio" value="national+parks" onClick={this.onRadioChange}/>
+            </button>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("national+parks")}>
+                <img src={require('../images/nationalpark.jpg')} className="rounded mx-auto d-block"  alt="national parks" width="250" height="auto"/>
                 <label>National Parks</label>
-            </div>
-            <div className="form-group individualPlaces">
-                <img src={require('../images/hiking.jpg')} className="rounded mx-auto d-block"  alt="hiking" width="350" height="auto"/>
-                <input name="group100" type="radio" value="hiking+destinations" onClick={this.onRadioChange}/>
+            </button>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("hiking+destinations")}>
+                <img src={require('../images/hiking.jpg')} className="rounded mx-auto d-block"  alt="hiking" width="250" height="auto"/>
                 <label>Hiking</label>
-            </div>
-            <div className="form-group individualPlaces">
-                <img src={require('../images/historicalplace.jpg')} className="rounded mx-auto d-block"  alt="historical places" width="350" height="auto"/>
-                <input name="group100" type="radio" value="historical+places" onClick={this.onRadioChange}/>
+            </button>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("historical+places")}>
+                <img src={require('../images/historicalplace.jpg')} className="rounded mx-auto d-block"  alt="historical places" width="250" height="auto"/>
                 <label>Historical Places</label>
-            </div>
-            <div className="form-group individualPlaces">
-                <img src={require('../images/surprise.png')} className="rounded mx-auto d-block"  alt="historical places" width="350" height="auto"/>
-                <input name="group100" type="radio" value="popular+destinations" onClick={this.onRadioChange}/>
+            </button>
+            <button className="form-group individualPlaces" onClick={() => this.onBtnClick("popular+destinations")}>
+                <img src={require('../images/surprise.png')} className="rounded mx-auto d-block"  alt="historical places" width="250" height="auto"/>
                 <label>Surprise Me</label>
-            </div>
+            </button>
         </div>
 
         <div id="destinationComp">
-        {this.props.places.randomPlace ? 
+        {this.props.places.randomPlace && this.state.showPlace ? 
             <DestinationComponent  randomPlace={this.props.places.randomPlace}/>
             : null}
         </div>

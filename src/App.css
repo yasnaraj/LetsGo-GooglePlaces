@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Homemade+Apple');
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Anton');
 .App {
   text-align: center;
 }
@@ -14,7 +13,7 @@
   height: 80px;
   padding: 20px;
   color: white;
-  font-family: 'Homemade Apple', cursive;
+  font-family: 'Anton', sans-serif;
 }
 
 .App-title {
@@ -42,17 +41,17 @@
     border: solid gainsboro 0.5px;
     padding: 10px;
     border-radius: 10px;
-    background: floralwhite;
+    background: #f8f9fa;
 }
 
 .mainHeader{
   margin-top: 15px;
-  font-family: 'Homemade Apple', cursive;
+  font-family: 'Anton', sans-serif;
 }
 
 .subHeader{
   margin-top: 20px;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Anton', sans-serif;
 }
 
 .alignLeft{
@@ -64,7 +63,44 @@
   margin-top: 10%;
 }
 
+.individualPlaces label{
+  font-weight: bold;
+}
+
+.fitCover{
+  object-fit: cover !important;
+  width: 900px;
+  height: 500px !important;
+}
+
+.avatar{
+  width: 60px;
+  float: left;
+}
+
+#destinationComp{
+  min-height: 600px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@media screen and (min-width: 1220px){
+  .placeSelection{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+}
+
+@media screen and (min-width: 920px){
+  #photoGallery{
+    width: 900px !important;
+    margin: auto;
+  }
+  
+}
+

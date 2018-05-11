@@ -36,6 +36,7 @@ export function GetPlaceDetail(placeId){
             service.getDetails(request, function callback(result, status){
                 if(status==="OK"){
                     var placeDetail = result;
+                    console.log(placeDetail);
                     dispatch({type: types.PLACE_DETAIL, placeDetail});
                 }else{
                     alert(status);
